@@ -93,6 +93,12 @@ public class GUINewCompany extends javax.swing.JDialog {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("*Nit:");
         pnlCenter.add(jLabel2);
+
+        txtNit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNitActionPerformed(evt);
+            }
+        });
         pnlCenter.add(txtNit);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -125,6 +131,12 @@ public class GUINewCompany extends javax.swing.JDialog {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("*Email:");
         pnlCenter.add(jLabel7);
+
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
         pnlCenter.add(txtEmail);
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -187,6 +199,14 @@ public class GUINewCompany extends javax.swing.JDialog {
     private void cboSectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSectorActionPerformed
         // TODO add your handling code here
     }//GEN-LAST:event_cboSectorActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtNitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNitActionPerformed
 
 
 
