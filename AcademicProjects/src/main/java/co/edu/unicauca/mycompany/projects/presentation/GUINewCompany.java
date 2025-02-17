@@ -194,7 +194,7 @@ public class GUINewCompany extends javax.swing.JDialog {
             txtPassword.requestFocus();
             return;
         }
-        
+        // Obtener el repositorio desde la Factory
         Company newCompany = new Company(nit, name, phone, pageWeb, Sector.valueOf(sector), email, password);
 
         // Asignar los campos opcionales si el usuario los ingresó
@@ -205,9 +205,6 @@ public class GUINewCompany extends javax.swing.JDialog {
         if (!pageWeb.isEmpty()) {
             newCompany.setPageWeb(pageWeb);
         }
-
-        // Obtener el repositorio desde la Factory
-        Company objCompany = new Company(nit, name, phone, pageWeb, Sector.valueOf(sector), email, password);
 
         if (companyService.saveCompany(newCompany)) {
             Messages.showMessageDialog("Empresa guardada exitosamente", "Éxito");

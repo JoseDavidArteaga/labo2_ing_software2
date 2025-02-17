@@ -59,7 +59,7 @@ public class CompanySqliteRepository implements ICompanyRepository {
             + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, newCompany.getName());
+            pstmt.setString(1, newCompany.getNit());
             pstmt.setString(2, newCompany.getName());
             pstmt.setString(3, newCompany.getPhone());
             pstmt.setString(4, newCompany.getPageWeb());
@@ -80,7 +80,7 @@ public class CompanySqliteRepository implements ICompanyRepository {
         List<Company> companies = new ArrayList<>();
         try (Connection conn = dbConnection.connect()) {
 
-            String sql = "SELECT nitCompany, nameCompany, phone, pageWeb, sector, email, password FROM Company";
+            String sql = "SELECT nit, name, phone, pageWeb, sector, email, password FROM Company";
             //this.connect();
 
             Statement stmt = conn.createStatement();
@@ -88,8 +88,8 @@ public class CompanySqliteRepository implements ICompanyRepository {
             while (rs.next()) {
                 //Company newCompany = new Company(sql, sql, sql, sql, Sector.HEALTH, sql, sql);
                 Company newCompany = new Company();
-                newCompany.setNit(rs.getString("nitCompany"));
-                newCompany.setName(rs.getString("nameCompany"));
+                newCompany.setNit(rs.getString("nit"));
+                newCompany.setName(rs.getString("name"));
                 newCompany.setPhone(rs.getString("phone"));
                 newCompany.setPageWeb(rs.getString("pageWeb"));
                 newCompany.setSector(Sector.valueOf(rs.getString("sector")));
