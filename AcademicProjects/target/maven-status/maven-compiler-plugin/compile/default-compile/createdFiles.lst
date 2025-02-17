@@ -15,5 +15,6 @@ co\edu\unicauca\mycompany\projects\presentation\GUINewCompany$3.class
 co\edu\unicauca\mycompany\projects\presentation\GUINewCompany$5.class
 co\edu\unicauca\mycompany\projects\access\CompanySqliteRepository.class
 co\edu\unicauca\mycompany\projects\access\CompanyArraysRepository.class
+co\edu\unicauca\mycompany\projects\access\DatabaseConnection.class
 co\edu\unicauca\mycompany\projects\access\ICompanyRepository.class
 co\edu\unicauca\mycompany\projects\presentation\GUINewCompany$1.class

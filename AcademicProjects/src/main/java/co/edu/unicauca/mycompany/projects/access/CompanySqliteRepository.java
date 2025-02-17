@@ -22,28 +22,14 @@ import java.util.logging.Logger;
  */
 public class CompanySqliteRepository implements ICompanyRepository {
 
-    private Connection conn;
+    private DatabaseConnection dbConnection;
 
     public CompanySqliteRepository() {
+        dbConnection = new DatabaseConnection();
         initDatabase();
     }
 
-    public void connect() {
-        // SQLite connection string
-        //String url = "jdbc:sqlite:./myDatabase.db"; //Para Linux/Mac
-        //String url = "jdbc:sqlite:C:/sqlite/db/myDatabase.db"; //Para Windows
-        String url = "jdbc:sqlite:C:\\Users\\josed\\OneDrive\\Documentos\\LAB ING SOFT 2\\labo2_ing_software2\\labo2_ing_software2\\BD\\mi_base.db";
-
-        try {
-            conn = DriverManager.getConnection(url);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(CompanyService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     private void initDatabase() {
-        // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS COMPANY (\n"
                 + "	nit TEXT NOT NULL,\n"
                 + "	name TEXT NOT NULL,\n"
@@ -53,29 +39,17 @@ public class CompanySqliteRepository implements ICompanyRepository {
                 +"	email TEXT NOT NULL,\n"
                 +"	password TEXT NOT NULL\n"
                 + ");";
-        try {
-            this.connect();
-            Statement stmt = conn.createStatement();
+        try (Connection conn = dbConnection.connect();
+             Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
-            //this.disconnect();
         } catch (SQLException ex) {
-            Logger.getLogger(CompanyService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    public void disconnect() {
-        try {
-            if (conn != null) {
-                conn.close();
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            Logger.getLogger(CompanySqliteRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     @Override
     public boolean save(Company newCompany) {
-        try {
+        try (Connection conn = dbConnection.connect()){
             //Validate product
             if (newCompany == null || newCompany.getName().isEmpty()) {
                 return false;
@@ -104,7 +78,7 @@ public class CompanySqliteRepository implements ICompanyRepository {
     @Override
     public List<Company> listAll() {
         List<Company> companies = new ArrayList<>();
-        try {
+        try (Connection conn = dbConnection.connect()) {
 
             String sql = "SELECT nitCompany, nameCompany, phone, pageWeb, sector, email, password FROM Company";
             //this.connect();
