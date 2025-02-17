@@ -21,9 +21,12 @@ public class CompanyService {
     }
 
     public boolean saveCompany(Company newCompany) {
+        System.out.println("Validando compañía: " + newCompany.getNit());
         if (!CompanyValidator.validate(newCompany)) {
+            System.out.println("Validación fallida");
             return false;
         }
+        System.out.println("Guardando en el repositorio...");
         return repository.save(newCompany);
     }
 }

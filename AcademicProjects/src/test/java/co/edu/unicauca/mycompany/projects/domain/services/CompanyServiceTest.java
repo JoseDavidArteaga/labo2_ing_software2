@@ -59,9 +59,10 @@ public class CompanyServiceTest {
         verify(repositoryMock, times(1)).listAll();
     }
 
+
     @Test
     void testSaveCompany_Success() {
-        Company newCompany = new Company("123459", "Empresa D","3434345", "www.mipagina4.com", Sector.SERVICES, "gerente4@gmail.com", "123");
+        Company newCompany = new Company("123459", "Empresa D","3434345", "www.mipagina4.com", Sector.SERVICES, "gerente4@gmail.com", "Pablo+2025");
 
         when(repositoryMock.save(newCompany)).thenReturn(true); // Simula éxito
 
@@ -71,9 +72,10 @@ public class CompanyServiceTest {
         verify(repositoryMock, times(1)).save(newCompany);
     }
 
+    //este test falla porque la contraseña no cumple los requisitos
     @Test
     void testSaveCompany_Failure() {
-        Company newCompany = new Company("123459", "Empresa D","3434345", "www.mipagina4.com", Sector.SERVICES, "gerente4@gmail.com", "123");
+        Company newCompany = new Company("123459", "PabloMotos","3434345", "www.mipagina4.com", Sector.SERVICES, "gerente4@gmail.com", "X23");
 
         when(repositoryMock.save(newCompany)).thenReturn(false); // Simula fallo
 

@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
  *
  * @author josed
  */
+//Se crea una clase para validar los datos, esto se hace para seguir los principios SOLID
 public class CompanyValidator {
     // se hace uso de expresiones regulares para validar los datos
     private static final String EMAIL_REGEX = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
