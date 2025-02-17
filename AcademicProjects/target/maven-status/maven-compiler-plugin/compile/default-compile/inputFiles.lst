@@ -1,11 +1,12 @@
-C:\Users\aasol\Downloads\AcademicProjects\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\access\CompanyArraysRepository.java
-C:\Users\aasol\Downloads\AcademicProjects\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\access\CompanySqliteRepository.java
-C:\Users\aasol\Downloads\AcademicProjects\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\access\Factory.java
-C:\Users\aasol\Downloads\AcademicProjects\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\access\ICompanyRepository.java
-C:\Users\aasol\Downloads\AcademicProjects\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\domain\entities\Company.java
-C:\Users\aasol\Downloads\AcademicProjects\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\domain\entities\Sector.java
-C:\Users\aasol\Downloads\AcademicProjects\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\domain\services\CompanyService.java
-C:\Users\aasol\Downloads\AcademicProjects\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\infra\Messages.java
-C:\Users\aasol\Downloads\AcademicProjects\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\main\Main.java
-C:\Users\aasol\Downloads\AcademicProjects\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\presentation\GUIMenu.java
-C:\Users\aasol\Downloads\AcademicProjects\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\presentation\GUINewCompany.java
+C:\Users\josed\OneDrive\Documentos\LAB ING SOFT 2\labo2_ing_software2\labo2_ing_software2\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\access\ICompanyRepository.java
+C:\Users\josed\OneDrive\Documentos\LAB ING SOFT 2\labo2_ing_software2\labo2_ing_software2\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\infra\Messages.java
+C:\Users\josed\OneDrive\Documentos\LAB ING SOFT 2\labo2_ing_software2\labo2_ing_software2\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\domain\entities\Company.java
+C:\Users\josed\OneDrive\Documentos\LAB ING SOFT 2\labo2_ing_software2\labo2_ing_software2\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\domain\services\CompanyService.java
+C:\Users\josed\OneDrive\Documentos\LAB ING SOFT 2\labo2_ing_software2\labo2_ing_software2\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\domain\services\CompanyValidator.java
+C:\Users\josed\OneDrive\Documentos\LAB ING SOFT 2\labo2_ing_software2\labo2_ing_software2\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\presentation\GUIMenu.java
+C:\Users\josed\OneDrive\Documentos\LAB ING SOFT 2\labo2_ing_software2\labo2_ing_software2\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\presentation\GUINewCompany.java
+C:\Users\josed\OneDrive\Documentos\LAB ING SOFT 2\labo2_ing_software2\labo2_ing_software2\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\access\CompanySqliteRepository.java
+C:\Users\josed\OneDrive\Documentos\LAB ING SOFT 2\labo2_ing_software2\labo2_ing_software2\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\main\Main.java
+C:\Users\josed\OneDrive\Documentos\LAB ING SOFT 2\labo2_ing_software2\labo2_ing_software2\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\domain\entities\Sector.java
+C:\Users\josed\OneDrive\Documentos\LAB ING SOFT 2\labo2_ing_software2\labo2_ing_software2\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\access\Factory.java
+C:\Users\josed\OneDrive\Documentos\LAB ING SOFT 2\labo2_ing_software2\labo2_ing_software2\AcademicProjects\src\main\java\co\edu\unicauca\mycompany\projects\access\CompanyArraysRepository.java

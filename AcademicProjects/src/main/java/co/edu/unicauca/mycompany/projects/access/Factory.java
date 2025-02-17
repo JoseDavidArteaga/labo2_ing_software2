@@ -1,5 +1,6 @@
 package co.edu.unicauca.mycompany.projects.access;
 
+import co.edu.unicauca.mycompany.projects.domain.services.CompanyService;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +16,6 @@ public class Factory {
      * Singleton
      */
     private static Factory instance;
-
     private Map<String, ICompanyRepository> dictionary;
 
     private Factory() {
@@ -23,6 +23,8 @@ public class Factory {
         dictionary.put("ARRAYS", new CompanyArraysRepository());
         dictionary.put("SQLITE", new CompanySqliteRepository());
     }
+    
+
 
     /**
      * Clase singleton

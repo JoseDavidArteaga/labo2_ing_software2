@@ -4,6 +4,7 @@ co\edu\unicauca\mycompany\projects\domain\services\CompanyService.class
 co\edu\unicauca\mycompany\projects\presentation\GUINewCompany$2.class
 co\edu\unicauca\mycompany\projects\presentation\GUINewCompany$4.class
 co\edu\unicauca\mycompany\projects\domain\entities\Company.class
+co\edu\unicauca\mycompany\projects\domain\services\CompanyValidator.class
 co\edu\unicauca\mycompany\projects\access\Factory.class
 co\edu\unicauca\mycompany\projects\domain\entities\Sector.class
 co\edu\unicauca\mycompany\projects\presentation\GUINewCompany.class

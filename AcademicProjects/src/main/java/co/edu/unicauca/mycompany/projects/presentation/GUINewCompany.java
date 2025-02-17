@@ -1,7 +1,11 @@
 
 package co.edu.unicauca.mycompany.projects.presentation;
 
+import co.edu.unicauca.mycompany.projects.access.Factory;
+import co.edu.unicauca.mycompany.projects.access.ICompanyRepository;
+import co.edu.unicauca.mycompany.projects.domain.entities.Company;
 import co.edu.unicauca.mycompany.projects.domain.entities.Sector;
+import co.edu.unicauca.mycompany.projects.domain.services.CompanyService;
 import co.edu.unicauca.mycompany.projects.infra.Messages;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -160,40 +164,66 @@ public class GUINewCompany extends javax.swing.JDialog {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         String nit = txtNit.getText().trim();
         String name = txtName.getText().trim();
-        String sector = (String) cboSector.getSelectedItem();
+        String sectorStr = (String) cboSector.getSelectedItem();
         String email = txtEmail.getText().trim();
         String password = txtPassword.getText().trim();
+        //campos opcionales
+        String phone = txtPhone.getText().trim();
+        String pageWeb = txtPageWeb.getText().trim();
         
-        if (nit.equals("")){
+        if (nit.isEmpty()) {
             Messages.showMessageDialog("Debe agregar el Nit", "Atención");
             txtNit.requestFocus();
             return;
         }
-        
-        if(name.equals("")){
+
+        if (name.isEmpty()) {
             Messages.showMessageDialog("Debe agregar el Nombre", "Atención");
-            txtNit.requestFocus();
+            txtName.requestFocus();
             return;
         }
-        
-        if (sector == null || sector.equals("")) {
+
+        if (sectorStr == null || sectorStr.isEmpty()) {
             Messages.showMessageDialog("Debe seleccionar un sector", "Atención");
             cboSector.requestFocus();
             return;
         }
-        
-        if(email.equals("")){
+
+        if (email.isEmpty()) {
             Messages.showMessageDialog("Debe agregar el Email", "Atención");
             txtEmail.requestFocus();
             return;
         }
-        
-        if(password.equals("")){
-            Messages.showMessageDialog("Debe agregar una Contrasena", "Atención");
+
+        if (password.isEmpty()) {
+            Messages.showMessageDialog("Debe agregar una Contraseña", "Atención");
             txtPassword.requestFocus();
             return;
         }
         
+        Sector sector = Sector.valueOf(sectorStr.toUpperCase()); 
+
+        // Crear objeto Company con los campos obligatorios
+        Company newCompany = new Company(nit, name, sector, email, password);
+
+        // Asignar los campos opcionales si el usuario los ingresó
+        if (!phone.isEmpty()) {
+            newCompany.setPhone(phone);
+        }
+
+        if (!pageWeb.isEmpty()) {
+            newCompany.setPageWeb(pageWeb);
+        }
+
+        // Obtener el repositorio desde la Factory
+        ICompanyRepository repository = Factory.getInstance().getRepository("ARRAYS");
+        CompanyService service = new CompanyService(repository);
+
+        if (service.saveCompany(newCompany)) {
+            Messages.showMessageDialog("Empresa guardada exitosamente", "Éxito");
+        } else {
+            Messages.showMessageDialog("Error: Datos inválidos o empresa ya registrada", "Error");
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void cboSectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSectorActionPerformed

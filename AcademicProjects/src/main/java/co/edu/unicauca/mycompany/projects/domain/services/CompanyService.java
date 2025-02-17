@@ -21,7 +21,9 @@ public class CompanyService {
     }
 
     public boolean saveCompany(Company newCompany) {
+        if (!CompanyValidator.validate(newCompany)) {
+            return false;
+        }
         return repository.save(newCompany);
     }
-
 }

@@ -32,7 +32,7 @@ public class CompanySqliteRepository implements ICompanyRepository {
         // SQLite connection string
         //String url = "jdbc:sqlite:./myDatabase.db"; //Para Linux/Mac
         //String url = "jdbc:sqlite:C:/sqlite/db/myDatabase.db"; //Para Windows
-        String url = "jdbc:sqlite:C:\\Users\\aasol\\Downloads\\AcademicProjects\\BD\\mi_base.db";
+        String url = "jdbc:sqlite:C:\\Users\\josed\\OneDrive\\Documentos\\LAB ING SOFT 2\\labo2_ing_software2\\labo2_ing_software2\\BD\\mi_base.db";
 
         try {
             conn = DriverManager.getConnection(url);
@@ -82,7 +82,7 @@ public class CompanySqliteRepository implements ICompanyRepository {
                 return false;
             }
             //this.connect();
-            String sql = "INSERT INTO cmpany ( nit, name, phone, pageWeb, sector, email, password  ) "
+            String sql = "INSERT INTO company ( nit, name, phone, pageWeb, sector, email, password  ) "   //posible error
                     + "VALUES ( ?, ?, ? )";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -103,29 +103,29 @@ public class CompanySqliteRepository implements ICompanyRepository {
     }
 
     @Override
-public List<Company> listAll() {
-    List<Company> companies = new ArrayList<>();
-    try {
-        String sql = "SELECT * FROM products";
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery(sql);
-        while (rs.next()) {
-            Company newCompany = new Company(
-                rs.getString("nit"),
-                rs.getString("name"),
-                rs.getString("phone"),
-                rs.getString("website"),
-                Sector.valueOf(rs.getString("sector")), // Convertir el valor de sector a un valor de enum
-                rs.getString("email"),
-                rs.getString("password")
-            );
-            myArray.add(newCompany); // Agregar al repositorio de empresas
+    public List<Company> listAll() {
+        List<Company> companies = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM companies"; 
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Company newCompany = new Company(
+                    rs.getString("nit"),
+                    rs.getString("name"),
+                    rs.getString("phone"),
+                    rs.getString("website"),
+                    Sector.valueOf(rs.getString("sector")), // Convertir el valor de sector a un valor de enum
+                    rs.getString("email"),
+                    rs.getString("password")
+                );
+                myArray.add(newCompany); // Agregar al repositorio de empresas
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CompanyService.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } catch (SQLException ex) {
-        Logger.getLogger(CompanyService.class.getName()).log(Level.SEVERE, null, ex);
+        return myArray; // Retornar la lista actualizada
     }
-    return myArray; // Retornar la lista actualizada
-}
 }
 
 
