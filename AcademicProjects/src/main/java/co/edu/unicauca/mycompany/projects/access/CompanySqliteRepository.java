@@ -49,7 +49,7 @@ public class CompanySqliteRepository implements ICompanyRepository {
                 + "	name TEXT NOT NULL,\n"
                 + "	phone TEXT NULL,\n"
                 +"	pageWeb TEXT NULL,\n"
-                +"	sector TEXT NOT NULL,\n"
+                + "     sector TEXT NOT NULL CHECK (sector IN ('TECHNOLOGY', 'HEALTH', 'EDUCATION', 'SERVICES', 'OTHER')),\n" //linea corregida
                 +"	email TEXT NOT NULL,\n"
                 +"	password TEXT NOT NULL\n"
                 + ");";
@@ -58,7 +58,6 @@ public class CompanySqliteRepository implements ICompanyRepository {
             Statement stmt = conn.createStatement();
             stmt.execute(sql);
             //this.disconnect();
-
         } catch (SQLException ex) {
             Logger.getLogger(CompanyService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -82,15 +81,15 @@ public class CompanySqliteRepository implements ICompanyRepository {
                 return false;
             }
             //this.connect();
-            String sql = "INSERT INTO company ( nit, name, phone, pageWeb, sector, email, password  ) "   //posible error
-                    + "VALUES ( ?, ?, ? )";
+            String sql = "INSERT INTO company (nit, name, phone, pageWeb, sector, email, password) "  
+            + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, newCompany.getName());
             pstmt.setString(2, newCompany.getName());
             pstmt.setString(3, newCompany.getPhone());
             pstmt.setString(4, newCompany.getPageWeb());
-            //pstmt.Sector(5, newCompany.getSector());
+            pstmt.setString(5, newCompany.getSector().toString());//linea corregida
             pstmt.setString(6, newCompany.getEmail());
             pstmt.setString(7, newCompany.getPassword());
             pstmt.executeUpdate();
@@ -106,25 +105,30 @@ public class CompanySqliteRepository implements ICompanyRepository {
     public List<Company> listAll() {
         List<Company> companies = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM companies"; 
+
+            String sql = "SELECT nitCompany, nameCompany, phone, pageWeb, sector, email, password FROM Company";
+            //this.connect();
+
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                Company newCompany = new Company(
-                    rs.getString("nit"),
-                    rs.getString("name"),
-                    rs.getString("phone"),
-                    rs.getString("website"),
-                    Sector.valueOf(rs.getString("sector")), // Convertir el valor de sector a un valor de enum
-                    rs.getString("email"),
-                    rs.getString("password")
-                );
-                myArray.add(newCompany); // Agregar al repositorio de empresas
+                //Company newCompany = new Company(sql, sql, sql, sql, Sector.HEALTH, sql, sql);
+                Company newCompany = new Company();
+                newCompany.setNit(rs.getString("nitCompany"));
+                newCompany.setName(rs.getString("nameCompany"));
+                newCompany.setPhone(rs.getString("phone"));
+                newCompany.setPageWeb(rs.getString("pageWeb"));
+                newCompany.setSector(Sector.valueOf(rs.getString("sector")));
+                newCompany.setEmail(rs.getString("email"));
+                newCompany.setPassword(rs.getString("password"));
+
+                companies.add(newCompany);
             }
+
         } catch (SQLException ex) {
             Logger.getLogger(CompanyService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return myArray; // Retornar la lista actualizada
+        return companies;
     }
 }
 

@@ -24,12 +24,8 @@ public class Company {
         this.password = password;
     }
     
-    public Company(String nit, String name, Sector sector, String email, String password) {
-        this.nit = nit;
-        this.name = name;
-        this.sector = sector;
-        this.email = email;
-        this.password = password;
+    public Company(){
+        
     }
 
     public String getNit() {

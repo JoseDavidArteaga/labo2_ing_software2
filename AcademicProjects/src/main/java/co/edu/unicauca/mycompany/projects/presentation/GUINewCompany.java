@@ -1,8 +1,6 @@
 
 package co.edu.unicauca.mycompany.projects.presentation;
 
-import co.edu.unicauca.mycompany.projects.access.Factory;
-import co.edu.unicauca.mycompany.projects.access.ICompanyRepository;
 import co.edu.unicauca.mycompany.projects.domain.entities.Company;
 import co.edu.unicauca.mycompany.projects.domain.entities.Sector;
 import co.edu.unicauca.mycompany.projects.domain.services.CompanyService;
@@ -12,7 +10,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author Libardo, Julio
+ * @author josed
  */
 public class GUINewCompany extends javax.swing.JDialog {
 
@@ -20,9 +18,11 @@ public class GUINewCompany extends javax.swing.JDialog {
      * Creates new form GUINewCompany
      * @param parent
      */
-    public GUINewCompany(JFrame parent) {
+    private CompanyService companyService;
+    
+    public GUINewCompany(JFrame parent, CompanyService companyService) {
         super(parent, "Nueva Empresa", true); //true: modal
-        
+        this.companyService = companyService;
         
         initComponents();
         setSize(600,500);
@@ -164,7 +164,7 @@ public class GUINewCompany extends javax.swing.JDialog {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         String nit = txtNit.getText().trim();
         String name = txtName.getText().trim();
-        String sectorStr = (String) cboSector.getSelectedItem();
+        String sector = cboSector.getSelectedItem().toString();
         String email = txtEmail.getText().trim();
         String password = txtPassword.getText().trim();
         //campos opcionales
@@ -183,12 +183,6 @@ public class GUINewCompany extends javax.swing.JDialog {
             return;
         }
 
-        if (sectorStr == null || sectorStr.isEmpty()) {
-            Messages.showMessageDialog("Debe seleccionar un sector", "Atención");
-            cboSector.requestFocus();
-            return;
-        }
-
         if (email.isEmpty()) {
             Messages.showMessageDialog("Debe agregar el Email", "Atención");
             txtEmail.requestFocus();
@@ -201,10 +195,7 @@ public class GUINewCompany extends javax.swing.JDialog {
             return;
         }
         
-        Sector sector = Sector.valueOf(sectorStr.toUpperCase()); 
-
-        // Crear objeto Company con los campos obligatorios
-        Company newCompany = new Company(nit, name, sector, email, password);
+        Company newCompany = new Company(nit, name, phone, pageWeb, Sector.valueOf(sector), email, password);
 
         // Asignar los campos opcionales si el usuario los ingresó
         if (!phone.isEmpty()) {
@@ -216,10 +207,9 @@ public class GUINewCompany extends javax.swing.JDialog {
         }
 
         // Obtener el repositorio desde la Factory
-        ICompanyRepository repository = Factory.getInstance().getRepository("ARRAYS");
-        CompanyService service = new CompanyService(repository);
+        Company objCompany = new Company(nit, name, phone, pageWeb, Sector.valueOf(sector), email, password);
 
-        if (service.saveCompany(newCompany)) {
+        if (companyService.saveCompany(newCompany)) {
             Messages.showMessageDialog("Empresa guardada exitosamente", "Éxito");
         } else {
             Messages.showMessageDialog("Error: Datos inválidos o empresa ya registrada", "Error");

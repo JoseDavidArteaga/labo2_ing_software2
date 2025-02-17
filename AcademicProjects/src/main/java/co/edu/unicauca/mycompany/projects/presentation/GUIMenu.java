@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author libardo
+ * @author josed
  */
 public class GUIMenu extends javax.swing.JFrame {
 
@@ -145,9 +145,9 @@ public class GUIMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNewCompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewCompanyActionPerformed
-        GUINewCompany instance = new GUINewCompany(null);
+        GUINewCompany instance = new GUINewCompany(null, this.companyService);
         instance.setVisible(true);
-
+        fillCompanies();
     }//GEN-LAST:event_btnNewCompanyActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
