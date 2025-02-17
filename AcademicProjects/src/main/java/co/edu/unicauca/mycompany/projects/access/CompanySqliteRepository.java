@@ -45,13 +45,13 @@ public class CompanySqliteRepository implements ICompanyRepository {
     private void initDatabase() {
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS COMPANY (\n"
-                + "	nit String NOT NULL,\n"
-                + "	name String NOT NULL,\n"
-                + "	phone String NULL,\n"
-                +"	pageWeb String NULL\n"
-                +"	sector Sector NOT NULL\n"
-                +"	email String NOT NULL\n"
-                +"	password String NOT NULL\n"
+                + "	nit TEXT NOT NULL,\n"
+                + "	name TEXT NOT NULL,\n"
+                + "	phone TEXT NULL,\n"
+                +"	pageWeb TEXT NULL,\n"
+                +"	sector TEXT NOT NULL,\n"
+                +"	email TEXT NOT NULL,\n"
+                +"	password TEXT NOT NULL\n"
                 + ");";
         try {
             this.connect();
