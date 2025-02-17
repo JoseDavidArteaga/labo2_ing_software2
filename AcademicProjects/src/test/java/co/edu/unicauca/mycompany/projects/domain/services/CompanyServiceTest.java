@@ -75,7 +75,7 @@ public class CompanyServiceTest {
     //este test falla porque la contraseña no cumple los requisitos
     @Test
     void testSaveCompany_Failure() {
-        Company newCompany = new Company("123459", "PabloMotos","3434345", "www.mipagina4.com", Sector.SERVICES, "gerente4@gmail.com", "X23");
+        Company newCompany = new Company("123459", "PabloMotos","3434345", "www.mipagina4.com", Sector.SERVICES, "gerente4@gmail.com", "Pab++20");
 
         when(repositoryMock.save(newCompany)).thenReturn(false); // Simula fallo
 
